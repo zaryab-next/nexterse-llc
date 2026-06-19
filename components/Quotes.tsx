@@ -51,7 +51,7 @@ const TRACK = [...SLIDES, ...SLIDES, ...SLIDES];
 
 export default function Quotes() {
   const viewportRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [slideW, setSlideW] = useState(0);
   const [gapPx, setGapPx] = useState(32);
   const [pos, setPos] = useState(N); // start at second copy

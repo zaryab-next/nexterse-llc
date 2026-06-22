@@ -8,24 +8,24 @@ import styles from "./Workflow.module.css";
  */
 const STEPS = [
   {
-    title: "First call",
-    text: "We start with a focused conversation to understand your business objectives, technical landscape, constraints, and success criteria.",
+    title: "Initial conversation",
+    text: "We open with a direct discussion to map your business goals, technical environment, constraints, and what success looks like — no sales pitch, just clarity.",
   },
   {
-    title: "Discovery and proposal",
-    text: "Our team reviews requirements, assesses risks, and proposes a clear delivery plan — including team structure, timeline, and engagement model.",
+    title: "Requirements & proposal",
+    text: "Our team evaluates your requirements, identifies risks early, and delivers a structured proposal covering scope, team composition, milestones, and engagement model.",
   },
   {
-    title: "Contract and onboarding",
-    text: "We finalize the scope and agreements, assign delivery ownership, and onboard the team with clear processes, communication, and governance in place.",
+    title: "Agreement & team setup",
+    text: "We lock in scope, sign off on agreements, and establish delivery ownership — with communication protocols, tooling, and governance ready before the first sprint.",
   },
   {
-    title: "Delivery and execution",
-    text: "The engineering work begins with embedded quality, regular checkpoints, and transparent progress tracking to ensure stable, predictable delivery.",
+    title: "Build & iterate",
+    text: "Engineering gets underway with quality embedded from sprint one — regular demos, transparent tracking, and early escalation of any blockers.",
   },
   {
-    title: "Scale, optimize, and support",
-    text: "We continuously improve performance, scale teams or systems as needed, and support long-term success through optimization and ongoing collaboration.",
+    title: "Grow, tune & sustain",
+    text: "Post-launch, we optimize performance, adapt team capacity as your needs evolve, and remain a long-term partner invested in your continued growth.",
   },
 ];
 
@@ -35,10 +35,10 @@ export default function Workflow() {
       <div className={`container ${styles.content}`}>
         <div className={styles.left}>
           <span className={styles.eyebrow}>Workflow</span>
-          <h2 className={styles.title}>Our Collaboration Process</h2>
+          <h2 className={styles.title}>How We Work Together</h2>
           <p className={styles.sub}>
-            A transparent and structured collaboration process that keeps teams aligned and
-            delivery predictable.
+            A structured, no-surprises engagement model designed to keep every stakeholder
+            aligned from first conversation to long-term delivery.
           </p>
           <div className={styles.media}>
             <Image
@@ -65,11 +65,11 @@ export default function Workflow() {
 
           <div className={styles.ctaBox}>
             <p className={styles.ctaText}>
-              Ready to move forward? Let&apos;s discuss your goals, challenges,
-              and the best way to start working together.
+              Have a project in mind? Tell us what you&apos;re building and we&apos;ll
+              map out the fastest path to getting it done right.
             </p>
             <a href="#contact" className={styles.ctaBtn}>
-              Contact Sales →
+              Start the conversation →
             </a>
           </div>
         </div>

@@ -43,13 +43,13 @@
   display: inline-block;
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .title {
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-accent-dark);
   line-height: 1.15;
   margin: 0;
 }
@@ -81,8 +81,8 @@
 }
 
 .exploreLink:hover {
-  color: var(--color-blue);
-  border-color: var(--color-blue);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .exploreLink:hover span {
@@ -186,7 +186,7 @@
 }
 
 .navBtn:not(:disabled):hover {
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .navBtn:disabled {

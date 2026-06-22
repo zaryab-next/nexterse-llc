@@ -8,73 +8,71 @@ import styles from "./Faq.module.css";
  *  First item open by default, "Load more" reveals hidden items. */
 const FAQS = [
   {
+    q: "What results can we realistically expect?",
+    aHtml: (
+      <>
+        <p>Results depend on the solution type, but our clients consistently see measurable improvements in operational efficiency, time-to-market, and system reliability.</p>
+        <p>For AI implementations, we target clear KPIs before build begins — cost reduction, accuracy thresholds, or automation rates — so success is defined, not assumed.</p>
+      </>
+    ),
+    hidden: false,
+  },
+  {
+    q: "How do you ensure the quality of what gets shipped?",
+    aHtml: (
+      <>
+        <p>Quality is embedded throughout delivery — not bolted on at the end. Senior engineers lead every engagement, peer review is mandatory, and automated test coverage is a delivery gate.</p>
+        <p>For AI systems, we apply evaluation frameworks, deterministic grounding, and red-teaming to verify accuracy and stability before any model reaches production.</p>
+      </>
+    ),
+    hidden: false,
+  },
+  {
     q: "How long will development take?",
     aHtml: (
       <>
-        <p>Timeline depends on:</p>
-        <ul>
-          <li>Product complexity.</li>
-          <li>Quality and compliance requirements.</li>
-          <li>Integration dependencies.</li>
-        </ul>
-        <p>After discovery, we provide a clear roadmap with delivery milestones.</p>
+        <p>Timelines are scoped during discovery and depend on product complexity, compliance requirements, and integration depth.</p>
+        <p>We commit to a structured roadmap with defined milestones — not a rough estimate followed by months of ambiguity.</p>
       </>
     ),
     hidden: false,
   },
   {
-    q: "How do you guarantee product quality?",
+    q: "What development methodologies do you follow?",
     aHtml: (
       <>
-        <p>We follow structured delivery processes, use experienced senior engineers, and apply rigorous QA practices.</p>
-        <p>For AI systems, we use evaluation frameworks, deterministic grounding, and red-teaming to ensure accuracy and stability.</p>
+        <p>For software products, we apply modern Agile practices within a structured SDLC — iterative delivery, continuous integration, and regular client checkpoints.</p>
+        <p>For AI and agentic systems, we use our Agentic Development Lifecycle (ADLC) — a framework purpose-built for probabilistic AI systems, covering hallucination control, token cost modeling, and continuous evaluation.</p>
       </>
     ),
     hidden: false,
   },
   {
-    q: "What methodologies do you use?",
+    q: "We don't need AI — can you build traditional software?",
     aHtml: (
       <>
-        <p>For traditional systems, we use modern Agile frameworks within a structured SDLC.</p>
-        <p>For autonomous AI systems, we apply the Agentic Development Lifecycle (ADLC) — introducing hallucination control, cost modeling, and AI-specific risk management.</p>
-      </>
-    ),
-    hidden: false,
-  },
-  {
-    q: "What is the difference between standard software development and the ADLC?",
-    aHtml: (
-      <>
-        <p>Standard software development (SDLC) manages deterministic systems with predictable outputs.</p>
-        <p>The ADLC governs probabilistic AI systems and adds structured controls such as hallucination evaluation, token cost forecasting, red-teaming, and continuous AI monitoring.</p>
-      </>
-    ),
-    hidden: false,
-  },
-  {
-    q: "We need a standard web or legacy application. Do we have to use AI?",
-    aHtml: (
-      <>
-        <p>No. If AI does not create measurable value for your business case, we build traditional software using proven engineering practices. AI is applied when it supports ROI.</p>
+        <p>Absolutely. If AI doesn't add measurable value to your use case, we build with proven engineering practices — no AI overhead, no unnecessary complexity.</p>
+        <p>We recommend AI only when it has a clear, quantifiable impact on your business.</p>
       </>
     ),
     hidden: true,
   },
   {
-    q: "Will our proprietary company data be used to train public AI models?",
+    q: "Is our data safe? Will it be used to train AI models?",
     aHtml: (
       <>
-        <p>No. We deploy secure architectures using VPC-isolated environments — Azure OpenAI, AWS Bedrock, or private open-source models. Your data remains within your secure cloud boundary and is never used to train public models.</p>
+        <p>Your data never leaves your secure boundary. We architect AI systems using VPC-isolated deployments — Azure OpenAI, AWS Bedrock, or private open-source models.</p>
+        <p>No proprietary data is shared with third-party model providers or used to train public AI systems, ever.</p>
       </>
     ),
     hidden: true,
   },
   {
-    q: "What happens after launch?",
+    q: "What does post-launch support look like?",
     aHtml: (
       <>
-        <p>We provide ongoing support, maintenance, and system optimization. For AI solutions, we monitor model performance and cost efficiency over time.</p>
+        <p>We offer structured support tiers covering bug resolution, performance monitoring, and iterative improvements. For AI systems, this includes model drift detection, cost tracking, and evaluation-driven updates.</p>
+        <p>Most clients stay with us as a long-term delivery partner — we're built for continuity, not handoffs.</p>
       </>
     ),
     hidden: true,

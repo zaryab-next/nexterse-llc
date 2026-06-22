@@ -82,7 +82,7 @@
 /* ── ::before — horizontal tail line ── */
 .btnPrev::before,
 .btnNext::before {
-  background: #ff415c;
+  background: var(--color-accent);
   content: "";
   display: block;
   height: 2px;
@@ -95,8 +95,8 @@
 /* ── ::after — arrowhead (rotated square corner) ── */
 .btnPrev::after,
 .btnNext::after {
-  border-bottom: 2px solid #ff415c;
-  border-right: 2px solid #ff415c;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
   content: "";
   display: block;
   height: 10px;

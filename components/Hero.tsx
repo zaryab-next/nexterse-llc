@@ -4,16 +4,6 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 
-/**
- * Hero — Satva's scroll-driven "sliding door" behaviour fused with Sumato's
- * two-column dev / AI cards.
- *
- * A tall wrapper provides scroll distance; an inner stage is sticky and pinned
- * to the viewport. Scroll progress (0 → 1) is written to a CSS custom property
- * `--p` on the stage, which drives the two door panels apart to reveal the
- * background. Each door carries one Sumato card, so the cards slide outward
- * with the doors.
- */
 export default function Hero() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -29,7 +19,6 @@ export default function Hero() {
       ticking = false;
       const rect = wrap.getBoundingClientRect();
       const distance = wrap.offsetHeight - window.innerHeight;
-      // 0 while the top is at/below the viewport top, 1 once fully scrolled past.
       const progress = distance > 0 ? clamp(-rect.top / distance, 0, 1) : 0;
       stage.style.setProperty("--p", progress.toFixed(4));
     };
@@ -53,12 +42,12 @@ export default function Hero() {
   return (
     <section className={styles.wrap} ref={wrapRef} id="top">
       <div className={styles.stage} ref={stageRef}>
-        {/* Background revealed as the doors part */}
+
+        {/* Layer 1 — sharp background video (revealed as doors open) */}
         <div className={styles.bg} aria-hidden>
-          {/* Looping background video */}
           <video
             className={styles.bgVideo}
-            src="/hero/nexterse_hero.mp4"
+            src="/hero/nexterse_herov.webm"
             autoPlay
             loop
             muted
@@ -71,13 +60,26 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* LEFT DOOR */}
+        {/* Layer 2 — blur panels that move with the doors.
+            filter:blur on a real video — no backdrop-filter, no compositor issues.
+            The video's left offset counteracts the door's translateX so the blurred
+            image stays aligned with the background video throughout the scroll. */}
+        <div className={`${styles.doorBlur} ${styles.doorBlurLeft}`} aria-hidden>
+          <video className={styles.doorBlurVideo} src="/hero/nexterse_herov.webm" autoPlay loop muted playsInline />
+          <div className={styles.doorBlurTint} />
+        </div>
+        <div className={`${styles.doorBlur} ${styles.doorBlurRight}`} aria-hidden>
+          <video className={`${styles.doorBlurVideo} ${styles.doorBlurVideoRight}`} src="/hero/nexterse_herov.webm" autoPlay loop muted playsInline />
+          <div className={styles.doorBlurTint} />
+        </div>
+
+        {/* Layer 3 — door panels (transparent bg, just carry the content) */}
         <div className={`${styles.door} ${styles.doorLeft}`}>
           <div className={styles.doorContent}>
             <h1 className={`${styles.heading} ${styles.headingLeft}`}>
               We build
               <br />
-              software that drives 
+              software that drives
               <br />
               business
             </h1>
@@ -92,13 +94,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT DOOR */}
         <div className={`${styles.door} ${styles.doorRight}`}>
           <div className={styles.doorContent}>
             <h1 className={`${styles.heading} ${styles.headingRight}`}>
               We build
               <br />
-              AI that transforms 
+              AI that transforms
               <br />
               business
             </h1>

@@ -6,7 +6,6 @@
   padding: 96px 0;
 }
 
-.wrapper {}
 
 .title {
   font-size: clamp(2rem, 4vw, 3rem);
@@ -34,7 +33,7 @@
 }
 
 .card.active {
-  border-top-color: var(--color-blue);
+  border-top-color: var(--color-accent);
 }
 
 /* circle bullet */
@@ -74,19 +73,19 @@
 }
 
 .active .question {
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .active .bullet {
-  border-color: var(--color-blue);
+  border-color: var(--color-accent);
 }
 
 .card:hover .question {
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .card:hover .bullet {
-  border-color: var(--color-blue);
+  border-color: var(--color-accent);
 }
 
 /* ---- Answer ---- */
@@ -142,7 +141,8 @@
   top: 5px;
   width: 1.5rem;
   height: 1.5rem;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%23127AFF' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  
   background-repeat: no-repeat;
   background-size: contain;
 }

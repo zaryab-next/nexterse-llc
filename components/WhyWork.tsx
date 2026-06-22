@@ -9,20 +9,20 @@ import styles from "./WhyWork.module.css";
  * by the "Why work with Satva" value cards. Brought into our theme.
  */
 const REVEAL =
-  "We solve the common frustrations that plague software development projects. No poor communication, no constant delays, and no overcomplicated process — just a smooth, successful journey.";
+  "Most software projects don’t fail from lack of talent — they fail from poor communication, shifting scope, and teams that disappear after launch. We’re built to fix exactly that.";
 
 const REASONS = [
   {
-    title: "Delivery, not theatre",
-    text: "We’re not a slide-deck consultancy or a body-shop. We build real software, with real teams, and we stay accountable for outcomes long after kickoff.",
+    title: "Outcomes, not outputs",
+    text: "We don’t measure success by tickets closed or features shipped. We stay accountable for real-world results — performance, adoption, and business impact — long after the build ends.",
   },
   {
-    title: "Partnership over transactions",
-    text: "Our clients stay with us because we care about what they’re trying to achieve, not just what we’re building. We are part of your team, not a supplier.",
+    title: "Your team, not a vendor",
+    text: "We embed into your product process, not alongside it. Clients stay with us because we treat their goals as our own — not because of a contract, but because that’s how we work.",
   },
   {
-    title: "Commercial clarity from day one",
-    text: "Clear pricing, defined scope or capacity, and no surprises. Whether it’s a fixed project or ongoing delivery, you always know what you’re paying for and why.",
+    title: "Transparent pricing, zero surprises",
+    text: "Fixed-scope or ongoing capacity — either way, you always know exactly what you’re paying for and why. No scope creep, no hidden costs, no retroactive negotiations.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function WhyWork() {
   return (
     <section className={styles.section} id="why-us">
       <div className="container">
-        <span className={styles.eyebrow}>Challenges of the software development process</span>
+        <span className={styles.eyebrow}>Why most software projects stall</span>
         <p className={styles.reveal} ref={revealRef}>
           {words.map((w, i) => (
             <span
@@ -80,10 +80,10 @@ export default function WhyWork() {
 
         <div className={styles.why}>
           <div className={styles.whyHead}>
-            <h2 className={styles.title}>Why companies work with us</h2>
+            <h2 className={styles.title}>Why companies choose Nexterse</h2>
             <p className={styles.sub}>
-              We remove the friction through clear ownership, experienced teams, and clear
-              accountability.
+              We cut through the noise with senior-led teams, defined accountability,
+              and a culture of shipping software that actually works.
             </p>
           </div>
           <div className={styles.cards}>

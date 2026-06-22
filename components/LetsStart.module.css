@@ -2,7 +2,7 @@
 .section {
   position: relative;
   z-index: 4;
-  background: #081530;
+  background: var(--color-accent-dark);
   color: #fff;
 }
 .wrapper {
@@ -26,7 +26,7 @@
   width: 100%;
 }
 .title {
-  color: var(--color-blue);
+  color: var(--color-accent);
   font-size: 56px;
   font-weight: 400;
   line-height: 62px;
@@ -78,7 +78,7 @@
 }
 /* Step 1 circle: blue border only */
 .step:first-of-type::before {
-  border-color: var(--color-blue);
+  border-color: var(--color-accent);
 }
 /* Connecting line — starts at circle bottom (top:24px), ends 12px below
    the step's box bottom (bottom:-12px). Because non-last steps now use
@@ -210,18 +210,20 @@
 .send {
   /* height: 54px; */
   /* min-width: 200px; */
-  padding: 0.6rem 1.25rem;
+  padding: 0.4rem 1.25rem;
   border: none;
   border-radius: var(--radius-button);
-  background: var(--color-accent);
-  color: #fff;
+  border:2px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.25s ease;
 }
 .send:hover {
-  background: var(--color-accent-hover);
+  background: var(--color-accent);
+  color: #fff
 }
 
 /* account manager + book consultation */
@@ -263,10 +265,9 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 54px;
-  padding: 0 24px;
-  border: 1px solid var(--color-accent);
-  border-radius: 4px;
+  padding: 0.4rem 1.25rem;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-button);
   color: var(--color-accent);
   font-weight: 600;
   white-space: nowrap;

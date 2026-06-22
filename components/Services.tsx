@@ -23,17 +23,17 @@ const TABS = [
     cta: "Custom AI software development services",
   },
   {
-    title: "Internet of Things development",
+    title: "Customer Relationship Management",
     description:
-      "We can consult on building IoT infrastructure or develop high-quality IoT software for enterprises and startups, focused on connected devices you can control and manage via web and mobile applications. IoT systems become even more powerful when combined with AI-driven predictive and autonomous capabilities.",
+      "We design and build custom CRM platforms and intelligent integrations that give your teams a complete, real-time picture of every customer relationship. From pipeline automation to AI-powered lead scoring and predictive churn analysis, we engineer CRM systems that drive revenue and retention at scale.",
     points: [
-      "Enterprise IoT architecture design",
-      "Predictive maintenance systems",
-      "IoT security & compliance frameworks",
-      "IoT integration into legacy systems",
-      "Real-time monitoring and analytics",
+      "Custom CRM platform development",
+      "CRM integration with existing ERP & data systems",
+      "AI-powered lead scoring & sales forecasting",
+      "Automated pipeline & customer journey workflows",
+      "Customer analytics & retention dashboards",
     ],
-    cta: "Enterprise IoT development",
+    cta: "Custom CRM development",
   },
   {
     title: "AI-powered software development",
@@ -73,8 +73,7 @@ export default function Services() {
       <div className={styles.container}> 
         {/* Dark background with red (left) + blue (right) glows */}
         <div className={styles.bg} aria-hidden>
-          <div className={styles.glowRed} />
-          <div className={styles.glowBlue} />
+        
         </div>
 
         <div className={styles.wrapper}>

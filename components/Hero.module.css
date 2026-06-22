@@ -1,7 +1,7 @@
 /* Tall wrapper gives the sticky stage room to drive the door animation */
 .wrap {
   position: relative;
-  height: 120vh;
+  height: 160vh;
 }
 
 .stage {
@@ -23,7 +23,6 @@
   left: 0;
   right: 0;
   height: var(--header-height);
-  background: #000000 transparent;
   z-index: 5;
   pointer-events: none;
 }
@@ -105,7 +104,53 @@
   font-weight: 300;
 }
 
-/* ---------- Sliding doors ---------- */
+/* ---------- Blur panels — move WITH doors, video anchored to stage ---------- */
+/* Uses filter:blur on a real video element (always works, no compositor issues).
+   The panel transforms with the door. The video inside counteracts that transform
+   via its left offset so it stays pixel-aligned with the bg video at all scroll positions. */
+.doorBlur {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+.doorBlurLeft {
+  left: 0;
+  transform: translateX(calc(var(--p) * -102%));
+}
+.doorBlurRight {
+  right: 0;
+  transform: translateX(calc(var(--p) * 102%));
+}
+
+/* 200% wide = full stage. left offset counteracts door's translateX so the
+   blurred frame stays aligned with the background video as the door slides. */
+.doorBlurVideo {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(6px);
+  /* +102%*p cancels the door's -102%*p translateX → video stays stage-anchored */
+  left: calc(var(--p) * 102%);
+}
+.doorBlurVideoRight {
+  /* -100% = initial right-door offset; -102%*p cancels the door's +102%*p translateX */
+  left: calc(-100% - var(--p) * 102%);
+}
+
+/* Dark tint over blurred video */
+.doorBlurTint {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Sliding doors — transparent carriers for content only ---------- */
 .door {
   position: absolute;
   top: 0;
@@ -114,12 +159,7 @@
   display: flex;
   overflow: hidden;
   z-index: 2;
-  
-  /* 1. Move the glass effect directly onto the transformed element */
-  background: rgba(8, 21, 48, 0.05);
-  backdrop-filter: blur(100px) saturate(160%);
-  -webkit-backdrop-filter: blur(100px) saturate(160%);
-  border-inline: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent; /* blur layer beneath handles the visual */
 }
 
 .doorLeft {
@@ -134,14 +174,14 @@
   transform: translateX(calc(var(--p) * 102%));
 }
 
-/* Glassmorphism layer — dark navy tint + blur over the video */
+/* Subtle inner border — starts below the header so the seam doesn't enter the header zone */
 .door::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: rgba(8, 21, 48, 0.05);
-  backdrop-filter: blur(100px) saturate(160%);
-  -webkit-backdrop-filter: blur(100px) saturate(160%);
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  right: 0;
   border-inline: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 0;
   pointer-events: none;
@@ -151,14 +191,13 @@
 
 .doorContent {
   position: relative;
-  /* z-index: 1; is no longer strictly necessary but fine to keep */
+  z-index: 1;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   gap: 3rem;
   padding: var(--header-height) 3rem 3rem;
 }
@@ -269,7 +308,8 @@
     padding-top: var(--header-height);
     background: linear-gradient(160deg, #0b1c42, #081530);
   }
-  .bg {
+  .bg,
+  .doorBlur {
     display: none;
   }
   .door {

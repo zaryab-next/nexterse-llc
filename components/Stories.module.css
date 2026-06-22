@@ -19,7 +19,7 @@
 }
 
 .titleAccent {
-  color: var(--color-blue); /* #127aff */
+  color: var(--color-accent); /* #127aff */
 }
 
 /* ---- Two-col grid: col-md-6 col-md-6 ---- */
@@ -44,7 +44,7 @@
 
 /* Sumatosoft: post title turns red (#ff415c) on hover */
 .feature:hover .featureTitle {
-  color: #ff415c;
+  color: var(--color-accent);
 }
 
 /* blog-section__post-image — uses padding-top trick for 56.21% aspect ratio */
@@ -113,7 +113,7 @@
 
 /* Sumatosoft: title turns red on hover */
 .sidePost:hover .sideTitle {
-  color: #ff415c;
+  color: var(--color-accent);
 }
 
 /* blog-section__post-title: 28px / 36px / black */
@@ -172,7 +172,7 @@
   gap: 4px;
   font-size: 16px;
   font-weight: 600;
-  color: #ff415c;
+  color: var(--color-accent);
   text-decoration: none;
   transition: opacity 0.2s;
 }

@@ -1,0 +1,217 @@
+/* ── Shared dropdown shell ── */
+.item {
+  position: relative;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.55rem 0.9rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: inherit;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.link:hover {
+  color: var(--color-accent);
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.item:hover .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown panel — base ── */
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 20px 64px rgba(10, 21, 48, 0.14);
+  padding: 40px 48px;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+.item:hover .panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── 3-column layout (Applied AI + Services) ── */
+.cols3 {
+  display: flex;
+  gap: 0;
+}
+.col {
+  flex: 1;
+  min-width: 200px;
+  max-width: 320px;
+  padding: 0 56px;
+  border-left: 1px solid var(--color-border);
+}
+.col:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+.col:last-child {
+  padding-right: 0;
+}
+
+/* ── Services — left-anchored, 3-col ── */
+.panelServices {
+  left: 0;
+  transform: translateY(8px);
+}
+.item:hover .panelServices {
+  transform: translateY(0);
+}
+
+/* ── About — right-anchored, horizontal layout ── */
+.panelAbout {
+  left: auto;
+  right: 0;
+  transform: translateY(8px);
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+.item:hover .panelAbout {
+  transform: translateY(0);
+}
+.aboutLinks {
+  flex-shrink: 0;
+  min-width: 260px;
+  max-width: 320px;
+  padding-right: 60px;
+  border-right: 1px solid var(--color-border);
+}
+.aboutNumbers {
+  flex: 1;
+  min-width: 420px;
+  padding-left: 60px;
+}
+.numbersGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 40px;
+  margin-top: 14px;
+}
+.numberVal {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+.numberLabel {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+  margin-top: 3px;
+}
+
+/* ── Insights — right-anchored ── */
+.panelInsights {
+  left: auto;
+  right: 0;
+  transform: translateY(8px);
+  display: flex;
+  gap: 0;
+}
+.item:hover .panelInsights {
+  transform: translateY(0);
+}
+.insightsLinks {
+  flex-shrink: 0;
+  min-width: 220px;
+  padding-right: 60px;
+}
+.articleCard {
+  min-width: 400px;
+  max-width: 500px;
+  padding-left: 60px;
+  border-left: 1px solid var(--color-border);
+}
+.articleTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.articleMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Shared inner elements ── */
+.colTitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.colLink {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  padding: 6px 0;
+  transition: color 0.15s ease, padding-left 0.15s ease;
+  display: block;
+  white-space: nowrap;
+}
+.colLink:hover {
+  color: var(--color-accent);
+  padding-left: 6px;
+}
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  transition: gap 0.15s ease;
+}
+.allLink:hover {
+  gap: 10px;
+}
+.allLink::after {
+  content: "→";
+}
+
+/* ── Hide dropdowns on mobile (nav already hidden) ── */
+@media (max-width: 900px) {
+  .panel {
+    display: none;
+  }
+}

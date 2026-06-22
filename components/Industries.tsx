@@ -4,14 +4,15 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import styles from "./Industries.module.css";
 
 const INDUSTRIES = [
-  { name: "Retail", text: "Powering commerce, fulfillment, and personalization platforms that improve efficiency, speed, and customer experience at scale." },
-  { name: "FinTech", text: "Delivering secure, compliant financial systems for lending, payments, and data automation, designed to scale without compromising stability." },
+  { name: "Retail & E-Commerce", text: "Powering commerce, fulfillment, and AI-driven personalization platforms that improve conversion, efficiency, and customer lifetime value at scale." },
+  { name: "Cybersecurity", text: "Building intelligent threat detection, identity management, and compliance automation systems that protect enterprise data and infrastructure in real time." },
   { name: "Software and Platforms", text: "Building scalable SaaS and enterprise platforms with reliable architecture, modern tooling, and long-term performance in mind." },
   { name: "HealthTech", text: "Modernizing regulated healthcare and life-science systems with secure data platforms, automation, and zero-disruption delivery." },
   { name: "Telecom", text: "Building cloud-native communication platforms with strong reliability, automation, and real-time data capabilities." },
-  { name: "Energy and Utilities", text: "Developing data-driven systems that improve operational visibility, efficiency, and long-term sustainability." },
+  { name: "Media & Entertainment", text: "Engineering content delivery, recommendation engines, and AI-powered personalization platforms that scale to millions of users without performance compromise." },
   { name: "Travel", text: "Developing scalable platforms that enhance booking experiences, personalization, and real-time customer engagement." },
   { name: "Logistics", text: "Developing data-driven systems that improve supply chain visibility, operational efficiency, and delivery performance." },
+  { name: "Education Technology", text: "Designing adaptive learning platforms, AI tutoring systems, and intelligent assessment tools that personalize education and improve measurable outcomes." },
 ];
 
 export default function Industries() {

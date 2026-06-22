@@ -55,9 +55,16 @@ export default function Hero() {
       <div className={styles.stage} ref={stageRef}>
         {/* Background revealed as the doors part */}
         <div className={styles.bg} aria-hidden>
-          <div className={styles.bgGrid} />
-          <div className={styles.bgGlowBlue} />
-          <div className={styles.bgGlowRed} />
+          {/* Looping background video */}
+          <video
+            className={styles.bgVideo}
+            src="/hero/nexterse_hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className={styles.bgOverlay} />
           <div className={styles.bgCaption}>
             <span className={styles.bgKicker}>Nexterse</span>
             <p>Software engineering &amp; applied AI, built to outlast launch.</p>
@@ -70,14 +77,16 @@ export default function Hero() {
             <h1 className={`${styles.heading} ${styles.headingLeft}`}>
               We build
               <br />
-              the partnership
+              software that drives 
+              <br />
+              business
             </h1>
             <Card
               className={styles.cardLeft}
               img="/hero/dev.png"
-              title="Traditional software development"
-              desc="Structured, rule-based, deterministic. Built on proven human methodologies and explicit code."
-              cta="Custom software development"
+              title="Custom Software Development"
+              desc="Purpose-built applications engineered for performance, scalability, and reliability—crafted to solve real business challenges."
+              cta="Custom Software Development"
               href="#contact"
             />
           </div>
@@ -87,16 +96,18 @@ export default function Hero() {
         <div className={`${styles.door} ${styles.doorRight}`}>
           <div className={styles.doorContent}>
             <h1 className={`${styles.heading} ${styles.headingRight}`}>
-              software &amp; AI
+              We build
               <br />
-              that outlasts it
+              AI that transforms 
+              <br />
+              business
             </h1>
             <Card
               className={styles.cardRight}
               img="/hero/ai.png"
-              title="AI-driven software development"
-              desc="Experimental, adaptive, probabilistic. Data-driven models, continuous learning, and automated optimization."
-              cta="Custom AI development"
+              title="Custom AI Development"
+              desc="Intelligent solutions powered by machine learning, generative AI, automation, and AI agents—designed to enhance productivity and unlock innovation."
+              cta="Custom AI Development"
               href="#contact"
             />
           </div>

@@ -10,18 +10,50 @@
   top: 0;
   height: 100vh;
   overflow: hidden;
-  /* Deep navy base — Sumato hero */
   background: #081530;
   color: #fff;
 }
 
+/* Solid bar covering the header zone — prevents door seam from
+   showing through the transparent header */
+.stage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: #000000 transparent;
+  z-index: 5;
+  pointer-events: none;
+}
+
 /* ---------- Background revealed behind the doors ---------- */
+/* NO z-index on .bg — removing it from its own stacking context so
+   backdrop-filter on .door::before can reach through and blur the video.
+   Chrome cannot composite a blur across a stacking-context boundary. */
 .bg {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  background: radial-gradient(120% 120% at 50% 0%, #0c1f48 0%, #081530 60%, #050d22 100%);
+  background: #050d22;
+}
+
+/* Full-cover looping video — no z-index, paints in DOM order */
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark overlay — no z-index, paints after bgVideo in DOM order */
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
 }
 .bgGrid {
   position: absolute;
@@ -51,6 +83,7 @@
   background: var(--color-accent);
   opacity: 0.22;
 }
+/* No z-index — stays below doors (z-index:2) via DOM order */
 .bgCaption {
   position: relative;
   text-align: center;
@@ -72,7 +105,7 @@
   font-weight: 300;
 }
 
-/* ---------- Sliding doors (Sumato dark hero, split for the reveal) ---------- */
+/* ---------- Sliding doors ---------- */
 .door {
   position: absolute;
   top: 0;
@@ -80,66 +113,55 @@
   height: 100%;
   display: flex;
   overflow: hidden;
-  will-change: transform;
   z-index: 2;
+  
+  /* 1. Move the glass effect directly onto the transformed element */
+  background: rgba(8, 21, 48, 0.05);
+  backdrop-filter: blur(100px) saturate(160%);
+  -webkit-backdrop-filter: blur(100px) saturate(160%);
+  border-inline: 1px solid rgba(255, 255, 255, 0.08);
 }
-/* Left half — red-tinted, matching Sumato's left side */
+
 .doorLeft {
   left: 0;
   justify-content: center;
-  background:
-    radial-gradient(80% 90% at 35% 38%, rgba(255, 65, 92, 0.22), transparent 62%),
-    linear-gradient(125deg, #0b1c42 0%, #081530 70%);
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
   transform: translateX(calc(var(--p) * -102%));
 }
-/* Right half — blue-tinted, matching Sumato's right side */
+
 .doorRight {
   right: 0;
   justify-content: center;
-  background:
-    radial-gradient(80% 90% at 65% 45%, rgba(18, 122, 255, 0.26), transparent 62%),
-    linear-gradient(235deg, #0c2150 0%, #081530 70%);
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
   transform: translateX(calc(var(--p) * 102%));
 }
-/* Angular geometric facets (Sumato's polygon planes) */
-.door::before,
-.door::after {
+
+/* Glassmorphism layer — dark navy tint + blur over the video */
+.door::before {
   content: "";
   position: absolute;
   inset: 0;
+  background: rgba(8, 21, 48, 0.05);
+  backdrop-filter: blur(100px) saturate(160%);
+  -webkit-backdrop-filter: blur(100px) saturate(160%);
+  border-inline: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 0;
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.025);
 }
-.doorLeft::before {
-  clip-path: polygon(0 0, 42% 0, 0 70%);
-}
-.doorLeft::after {
-  clip-path: polygon(0 100%, 30% 100%, 0 55%);
-  background: rgba(0, 0, 0, 0.18);
-}
-.doorRight::before {
-  clip-path: polygon(100% 0, 58% 0, 100% 78%);
-}
-.doorRight::after {
-  clip-path: polygon(100% 100%, 64% 100%, 100% 48%);
-  background: rgba(0, 0, 0, 0.18);
-}
+
+.door::after { display: none; }
 
 .doorContent {
   position: relative;
-  z-index: 1;
+  /* z-index: 1; is no longer strictly necessary but fine to keep */
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
   gap: 3rem;
   padding: var(--header-height) 3rem 3rem;
 }
-
 /* ---------- Hero heading (split across the seam) ---------- */
 .heading {
   font-size: clamp(2.2rem, 5vw, 4.4rem);

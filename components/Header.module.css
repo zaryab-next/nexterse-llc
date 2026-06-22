@@ -7,9 +7,11 @@
   height: var(--header-height);
   display: flex;
   align-items: center;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.95);
   border-bottom: 1px solid transparent;
   color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
@@ -18,6 +20,8 @@
   background: #fff;
   border-bottom-color: var(--color-border);
   color: var(--color-text);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .solid .burger {
@@ -38,8 +42,17 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
   justify-self: start;
+}
+/* White logo on transparent header; darken to natural on solid white header */
+.logoImg {
+  height: 60px;
+  width: auto;
+  /* filter: brightness(0) invert(1); */
+  transition: filter 0.3s ease;
+}
+.solid .logoImg {
+  filter: none;
 }
 .logoMark {
   display: grid;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Header.module.css";
 import ContactModal from "./ContactModal";
 
@@ -80,10 +81,14 @@ export default function Header() {
       <header className={`${styles.header} ${solid ? styles.solid : ""}`}>
         <div className={styles.inner}>
           <a href="#top" className={styles.logo} aria-label="Nexterse home">
-            <span className={styles.logoMark}>N</span>
-            <span className={styles.logoText}>
-              Nexterse<span className={styles.dot}>.</span>
-            </span>
+            <Image
+              src="/brand/nexterse_logo.png"
+              alt="Nexterse"
+              width={140}
+              height={36}
+              className={styles.logoImg}
+              priority
+            />
           </a>
 
           <nav className={styles.nav}>

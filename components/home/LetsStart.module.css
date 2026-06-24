@@ -217,7 +217,7 @@
   background: transparent;
   color: var(--color-accent);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.25s ease;
 }
@@ -274,8 +274,8 @@
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 .book svg {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 .book:hover {
   background: var(--color-accent);

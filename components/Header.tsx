@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Header.module.css";
 import dd from "./NavDropdown.module.css";
 import ContactModal from "./ContactModal";
@@ -132,7 +133,7 @@ export default function Header() {
         className={`${styles.header} ${solid ? styles.solid : ""}`}
       >
         <div className={styles.inner}>
-          <a href="#top" className={styles.logo} aria-label="Nexterse home">
+          <Link href="/" className={styles.logo} aria-label="Nexterse home">
             <Image
               src={solid ? "/brand/nexters_logo_blue.png" : "/brand/nexterse_logo.png"}
               alt="Nexterse"
@@ -141,7 +142,7 @@ export default function Header() {
               className={styles.logoImg}
               priority
             />
-          </a>
+          </Link>
 
           <nav className={styles.nav}>
             <ul className={styles.navList}>
@@ -151,32 +152,36 @@ export default function Header() {
                 <a href="#applied-ai" className={dd.link}>
                   Applied AI <Chevron className={dd.chevron} />
                 </a>
-                <div className={`${dd.panel} ${dd.cols3}`}>
+                <div className={`${dd.panel} ${dd.panelAppliedAI} ${dd.cols3}`}>
                   {[
                     {
                       title: "Strategy",
-                      links: ["AI Consulting", "AI Readiness Assessment", "AI PoC Development"],
+                      links: [
+                        { label: "AI Consulting",           href: "/ai-consulting" },
+                        { label: "AI Readiness Assessment", href: "/ai-readiness-assessment" },
+                        { label: "AI PoC Development",      href: "/ai-consulting#services" },
+                      ],
                     },
                     {
                       title: "Development",
                       links: [
-                        "AI Software Development",
-                        "AI Agents Development",
-                        "RAG Development",
-                        "LLM Development",
-                        "GenAI Development",
-                        "OpenAI Development",
-                        "AIoT Development",
+                        { label: "AI Software Development", href: "#applied-ai" },
+                        { label: "AI Agents Development",   href: "#applied-ai" },
+                        { label: "RAG Development",         href: "#applied-ai" },
+                        { label: "LLM Development",         href: "#applied-ai" },
+                        { label: "GenAI Development",       href: "#applied-ai" },
+                        { label: "OpenAI Development",      href: "#applied-ai" },
+                        { label: "AIoT Development",        href: "#applied-ai" },
                       ],
                     },
                     {
                       title: "Operations",
                       links: [
-                        "AI Integration",
-                        "GenAI Integration",
-                        "Big Data Development",
-                        "ML Development",
-                        "AIoT & Data Analytics",
+                        { label: "AI Integration",          href: "#applied-ai" },
+                        { label: "GenAI Integration",       href: "#applied-ai" },
+                        { label: "Big Data Development",    href: "#applied-ai" },
+                        { label: "ML Development",          href: "#applied-ai" },
+                        { label: "AIoT & Data Analytics",   href: "#applied-ai" },
                       ],
                     },
                   ].map((col) => (
@@ -184,7 +189,7 @@ export default function Header() {
                       <p className={dd.colTitle}>{col.title}</p>
                       <div className={dd.colLinks}>
                         {col.links.map((l) => (
-                          <a key={l} href="#applied-ai" className={dd.colLink}>{l}</a>
+                          <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
                         ))}
                       </div>
                     </div>
@@ -240,9 +245,49 @@ export default function Header() {
                 </div>
               </li>
 
-              {/* ── Process (no dropdown) ── */}
+              {/* ── Process — Satva-style mega panel ── */}
               <li className={dd.item}>
-                <a href="#process" className={dd.link}>Process</a>
+                <a href="#process" className={dd.link}>
+                  Process <Chevron className={dd.chevron} />
+                </a>
+                <div className={`${dd.panel} ${dd.panelProcess}`}>
+                  {/* Left: tagline + CTA */}
+                  <div className={dd.processLeft}>
+                    <p className={dd.processTagline}>
+                      Working collaboratively with clients to develop outstanding solutions
+                    </p>
+                    <a href="#process" className={dd.processCtaLink}>
+                      Our Process →
+                    </a>
+                  </div>
+
+                  {/* Right: 3 image cards using Next.js Image fill */}
+                  <div className={dd.processCards}>
+                    {[
+                      {
+                        label: "Project Onboarding & Delivery",
+                        href: "#process",
+                        src: "/cases/team.jpg",
+                      },
+                      {
+                        label: "Expert Vetting Process",
+                        href: "#process",
+                        src: "/cases/woman.jpg",
+                      },
+                      {
+                        label: "Our Development Process",
+                        href: "#process",
+                        src: "/cases/mobile-dev.webp",
+                      },
+                    ].map((card) => (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <a key={card.label} href={card.href} className={dd.processCard}>
+                        <img src={card.src} alt="" className={dd.processCardImg} />
+                        <div className={dd.processCardLabel}>{card.label}</div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </li>
 
               {/* ── Pricing (no dropdown) ── */}
@@ -361,18 +406,7 @@ export default function Header() {
         aria-label="Menu"
         aria-hidden={!open}
       >
-        <div className={styles.panelHead}>
-          <Image
-            src="/brand/nexters_logo_blue.png"
-            alt="Nexterse"
-            width={130}
-            height={34}
-            className={styles.panelLogo}
-          />
-          <button className={styles.close} aria-label="Close menu" onClick={() => setOpen(false)}>
-            ✕
-          </button>
-        </div>
+
 
         <div className={styles.panelContact}>
           <span className={styles.panelHeading}>Get in touch</span>
